@@ -7,6 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'hello_flutter',
       theme: ThemeData(primaryColor: Colors.green),
       home: RandomWords(),
