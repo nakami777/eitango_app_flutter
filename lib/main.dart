@@ -13,24 +13,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class RandomWords extends StatefulWidget {
-  @override
-  _RandomWordsState createState() => _RandomWordsState();
-}
-
 class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
+  final _saved = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18.0);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ランダム単語生成アプリ'),
-      ),
-      body: _buildSuggestions(),
-    );
-  }
 
   Widget _buildSuggestions() {
     return ListView.builder(
@@ -47,10 +33,40 @@ class _RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
+
     return ListTile(
         title: Text(
-      pair.asPascalCase,
-      style: _biggerFont,
-    ));
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+        trailing: Icon(
+          alreadySaved ? Icons.favorite : Icons.favorite_border,
+          color: alreadySaved ? Colors.red : null,
+        ),
+        onTap: () {
+          setState(() {
+            if (alreadySaved) {
+              _saved.remove(pair);
+            } else {
+              _saved.add(pair);
+            }
+          });
+        });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ランダム単語生成アプリ'),
+      ),
+      body: _buildSuggestions(),
+    );
+  }
+}
+
+class RandomWords extends StatefulWidget {
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
 }
