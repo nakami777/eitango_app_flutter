@@ -1,10 +1,18 @@
-# hello_flutter
+# eitango_app_flutter
 
 A new Flutter project.
 
-## screen
+## アプリ操作画面
 
 https://user-images.githubusercontent.com/41714308/122653692-41365c00-d181-11eb-9d34-218d24e78013.mov
+
+## 完了タスク
+✅ ランダムに英単語を取得する実装
+✅ 無限スクロールビューの実装
+✅ いいね機能の実装
+✅ いいね一覧機能の実装
+✅ ナビゲーションの実装
+✅ テーマカラーの変更
 
 ## Getting Started
 
